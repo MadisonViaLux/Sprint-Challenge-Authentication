@@ -17,7 +17,7 @@ router.post('/register', (req, res) => {
     .then(person => {
       res.status(201).json(person)
     })
-    .catch(err => res.send({message: 'WHAT ARE YOU DOING!?'}))
+    .catch(err => res.status(500).json({message: 'WHAT ARE YOU DOING!?'}))
 
 });
 
@@ -42,8 +42,8 @@ router.post('/login', (req, res) => {
 
 router.get('/', blocker, (req, res) => {
   Users.find()
-      .then(users => res.json(users))
-      .catch(err => res.send(err));
+      .then(users => res.status(200).json(users))
+      .catch(err => res.status(500).json(console.log(err)));
 });
 
 
