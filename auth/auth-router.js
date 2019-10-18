@@ -4,6 +4,9 @@ const generateToken = require('../token/token')
 const blocker = require('./authenticate-middleware')
 const bcrypt = require('bcryptjs')
 
+
+
+
 router.post('/register', (req, res) => {
   // implement registration
   const user = req.body
@@ -17,6 +20,7 @@ router.post('/register', (req, res) => {
     .catch(err => res.send({message: 'WHAT ARE YOU DOING!?'}))
 
 });
+
 
 router.post('/login', (req, res) => {
   // implement login
@@ -34,5 +38,18 @@ router.post('/login', (req, res) => {
     })
     .catch(err => res.send({message: 'WHAT ARE YOU DOING NOW!?'}))
 });
+
+
+router.get('/', blocker, (req, res) => {
+  Users.find()
+      .then(users => res.json(users))
+      .catch(err => res.send(err));
+});
+
+
+
+
+
+
 
 module.exports = router;
