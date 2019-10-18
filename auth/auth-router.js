@@ -36,7 +36,7 @@ router.post('/login', (req, res) => {
         res.status(401).json({message: 'it 60 scarupts to enter cave claw.. you dont have enough. go away!'})
       }
     })
-    .catch(err => res.send({message: 'WHAT ARE YOU DOING NOW!?'}))
+    .catch(err => res.status(500).json({message: 'WHAT ARE YOU DOING NOW!?'}))
 });
 
 
